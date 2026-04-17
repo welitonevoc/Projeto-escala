@@ -366,8 +366,8 @@ export default function App() {
       ];
 
       const oficialRows: any[] = [];
-      Object.entries(escalaOficial).forEach(([dia, items]) => {
-        items.forEach(item => oficialRows.push([dataInicio, dia, item.congregacao, item.codigo, item.escalados.join(",")]));
+Object.entries(escalaOficial as any).forEach(([dia, items]: any[]) => {
+         items.forEach((item: any) => oficialRows.push([dataInicio, dia, item.congregacao, item.codigo, item.escalados.join(",")]));
       });
       reqs.push({ range: "EscalaOficial!A:E", values: oficialRows });
 
@@ -500,7 +500,7 @@ export default function App() {
                  <Printer size={14} /> Imprimir Local
               </button>
            </div>
-        </div>
+</div>
 
         <main className="animate-in fade-in slide-in-from-bottom-4 duration-700">
            
@@ -632,9 +632,11 @@ export default function App() {
 ))}
                </div>
 
-               {/* --- PP: PONTO DE PREGAÇÃO --- */}
-               <div className="mt-12 space-y-8">
-                  <div className="bg-orange-100 border-2 border-dashed border-orange-500 rounded-[20px] p-6">
+)}
+
+         {activeTab === "escala-local" && (
+         <div className="mt-12 space-y-8">
+           <div className="bg-orange-100 border-2 border-dashed border-orange-500 rounded-[20px] p-6">
                      <h2 className="text-[#b83a10] text-xl font-black uppercase tracking-wider flex items-center gap-3">
                         <span className="bg-[#e05c2a] text-white px-3 py-1 rounded-full text-sm">PP</span> Ponto de Pregação (PP) - Semanal
                      </h2>
@@ -706,9 +708,11 @@ export default function App() {
                   ))}
                </div>
 
-               {/* --- PORTARIA --- */}
-               <div className="mt-12 space-y-8">
-                  <div className="bg-[#1a5fa0] bg-opacity-10 border-2 border-dashed border-[#1a5fa0] rounded-[20px] p-6">
+)}
+
+         {activeTab === "escala-local" && (
+         <div className="mt-12 space-y-8">
+           <div className="bg-blue-100 border-2 border-dashed border-blue-500 rounded-[20px] p-6">
                      <h2 className="text-[#0d4a8a] text-xl font-black uppercase tracking-wider flex items-center gap-3">
                         <span className="bg-[#1a5fa0] text-white px-3 py-1 rounded-full text-sm">P</span> Portaria - Semanal
                      </h2>
