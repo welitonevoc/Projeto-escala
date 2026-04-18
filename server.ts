@@ -20,7 +20,11 @@ function getSheetsClient() {
   if (sheetsClient) return sheetsClient;
 
   const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
-  const key = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n");
+  let key = process.env.GOOGLE_PRIVATE_KEY;
+  if (key) {
+    // Remove aspas extras se houver e trata as quebras de linha \n
+    key = key.replace(/^"(.*)"$/, '$1').replace(/\\n/g, '\n');
+  }
   const spreadsheetId = process.env.GOOGLE_SHEETS_ID;
 
   if (!email || !key || !spreadsheetId) {
